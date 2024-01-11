@@ -45,5 +45,19 @@ public class ProduitService {
 	        return null;
 	    }
 
+   public void deleteProduit(Long id) {
+       
+	   	Produit produitToRemove = null;
 
+	       for (Produit p : produits) {
+	           if (p.getId().equals(id)) {
+	               produitToRemove = p;
+	               break;
+	           }
+	       }
+
+	       if (produitToRemove != null) {
+	           produits.remove(produitToRemove);
+	       }
+	        }
 }
