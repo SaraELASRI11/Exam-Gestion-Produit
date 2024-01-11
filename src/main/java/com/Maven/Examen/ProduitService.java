@@ -44,6 +44,24 @@ public class ProduitService {
 	        }
 	        return null;
 	    }
+   public void updateProduit(Produit updatedProduit) {
+	    for (Produit existingProd : produits) {
+	        if (existingProd.getId().equals(updatedProduit.getId())) {
+	            for (Produit p : produits) {
+	                if (!existingProd.equals(p) && p.getNom().equals(updatedProduit.getNom())) {
+	                    throw new IllegalArgumentException("Un produit avec le même nom existe déjà.");
+	                }
+	            }
+
+	            existingProd.setNom(updatedProduit.getNom());
+	            existingProd.setPrix(updatedProduit.getPrix());
+	            existingProd.setQuantite(updatedProduit.getQuantite());
+
+	            return;
+	        }
+	    }
+	    throw new IllegalArgumentException("Produit non trouvé pour la mise à jour.");
+	}
 
 
 }
