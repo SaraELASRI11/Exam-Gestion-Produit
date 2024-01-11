@@ -63,5 +63,19 @@ public class ProduitService {
 	    throw new IllegalArgumentException("Produit non trouvé pour la mise à jour.");
 	}
 
+   public void deleteProduit(Long id) {
+       
+	   	Produit produitToRemove = null;
 
+	       for (Produit p : produits) {
+	           if (p.getId().equals(id)) {
+	               produitToRemove = p;
+	               break;
+	           }
+	       }
+
+	       if (produitToRemove != null) {
+	           produits.remove(produitToRemove);
+	       }
+	        }
 }
