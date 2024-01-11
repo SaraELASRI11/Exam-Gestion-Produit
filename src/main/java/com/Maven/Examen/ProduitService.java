@@ -20,12 +20,8 @@ public class ProduitService {
 	    return prix >= 0 && quantite >= 0;
 	}
 
-
-	
     public void createProduit(Produit produit) {
       
-    	
-    	
     	    if (!produitExiste(produit.getId(), produit.getNom())) {
     	        if (ValidationProduit(produit.getPrix(), produit.getQuantite())) {
     	            produits.add(produit);
@@ -40,5 +36,14 @@ public class ProduitService {
     	        throw new IllegalArgumentException("Un produit avec le même ID ou nom existe déjà.");
     	    }
     		}
+   public Produit readProduit(Long id) {
+	        for (Produit p : produits) {
+	            if (p.getId().equals(id)) {
+	                return p;
+	            }
+	        }
+	        return null;
+	    }
+
 
 }
